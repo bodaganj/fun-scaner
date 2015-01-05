@@ -18,12 +18,12 @@ public class DefinitionSteps {
     }
 
     @When("the user looks up the definition of the word '$word'")
-    public void whenTheUserLooksUpTheDefinitionOf(String word) {
+    public void whenTheUserLooksUpTheDefinitionOf(final String word) {
         endUser.looks_for(word);
     }
 
     @Then("they should see the definition '$definition'")
-    public void thenTheyShouldSeeADefinitionContainingTheWords(String definition) {
+    public void thenTheyShouldSeeADefinitionContainingTheWords(final String definition) {
         endUser.should_see_definition(definition);
     }
 

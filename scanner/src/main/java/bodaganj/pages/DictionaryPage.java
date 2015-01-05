@@ -1,18 +1,16 @@
 package bodaganj.pages;
 
-import ch.lambdaj.function.convert.Converter;
+import java.util.List;
+
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import net.thucydides.core.annotations.findby.FindBy;
+import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
-import net.thucydides.core.annotations.findby.FindBy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-import net.thucydides.core.pages.PageObject;
-
-import java.util.List;
+import ch.lambdaj.function.convert.Converter;
 
 import static ch.lambdaj.Lambda.convert;
 
@@ -25,7 +23,7 @@ public class DictionaryPage extends PageObject {
     @FindBy(name="go")
     private WebElementFacade lookupButton;
 
-    public void enter_keywords(String keyword) {
+    public void enter_keywords(final String keyword) {
         searchTerms.type(keyword);
     }
 
