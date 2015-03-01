@@ -1,14 +1,15 @@
 package bodaganj.panels;
 
 import net.thucydides.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
+
+import bodaganj.pages.AbstractPage;
 
 /**
  * Created by bogdan on 01.03.15.
  */
-public class MatchListPanel {
+public class MatchListPanel extends AbstractPanel {
 
-    public MatchListPanel(final WebDriver webDriver, final WebElementFacade webElementFacade) {
-
+    public MatchListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+        super(panelBaseLocation, driverDelegate);
     }
 }

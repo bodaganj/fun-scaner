@@ -1,14 +1,15 @@
 package bodaganj.panels;
 
 import net.thucydides.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
+
+import bodaganj.pages.AbstractPage;
 
 /**
  * Created by bogdan on 01.03.15.
  */
-public class NewsListPanel {
+public class NewsListPanel extends AbstractPanel {
 
-    public NewsListPanel(final WebDriver webDriver, final WebElementFacade webElementFacade) {
-
+    public NewsListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+        super(panelBaseLocation, driverDelegate);
     }
 }

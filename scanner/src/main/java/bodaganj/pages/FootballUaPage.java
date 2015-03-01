@@ -1,20 +1,24 @@
 package bodaganj.pages;
 
+import net.thucydides.core.annotations.At;
+import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.annotations.findby.FindBy;
+import net.thucydides.core.pages.WebElementFacade;
+
+import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+
 import bodaganj.engine.ProjectLogger;
 import bodaganj.panels.MainPanel;
 import bodaganj.panels.MatchListPanel;
 import bodaganj.panels.NewsListPanel;
-import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
-import net.thucydides.core.pages.WebElementFacade;
-import org.slf4j.Logger;
 
 /**
  * Created by bogdan on 01.03.15.
  */
+@At(".*/football.ua")
 @DefaultUrl("http://football.ua/")
-public class FootballUaPage extends PageObject {
+public class FootballUaPage extends AbstractPage {
 
     private static final Logger LOG = ProjectLogger.getLogger(FootballUaPage.class.getSimpleName());
 
@@ -27,18 +31,22 @@ public class FootballUaPage extends PageObject {
     @FindBy(xpath = "//*[@class='col-left']")
     private WebElementFacade matchListPanelBaseElement;
 
+    public FootballUaPage(WebDriver driver) {
+        super(driver);
+    }
+
     public MainPanel getMainPanel() {
         mainPanelBaseElement.waitUntilVisible();
-        return new MainPanel(getDriver(), mainPanelBaseElement);
+        return new MainPanel(mainPanelBaseElement, this);
     }
 
     public NewsListPanel getNewsListPanel() {
         mainPanelBaseElement.waitUntilVisible();
-        return new NewsListPanel(getDriver(), mainPanelBaseElement);
+        return new NewsListPanel(mainPanelBaseElement, this);
     }
 
     public MatchListPanel getMatchListPanel() {
         mainPanelBaseElement.waitUntilVisible();
-        return new MatchListPanel(getDriver(), mainPanelBaseElement);
+        return new MatchListPanel(mainPanelBaseElement, this);
     }
 }
