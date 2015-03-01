@@ -1,5 +1,6 @@
 package bodaganj.pages;
 
+import bodaganj.engine.ProjectLogger;
 import bodaganj.panels.MainPanel;
 import bodaganj.panels.MatchListPanel;
 import bodaganj.panels.NewsListPanel;
@@ -7,12 +8,15 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import org.slf4j.Logger;
 
 /**
  * Created by bogdan on 01.03.15.
  */
 @DefaultUrl("http://football.ua/")
 public class FootballUaPage extends PageObject {
+
+    private static final Logger LOG = ProjectLogger.getLogger(FootballUaPage.class.getSimpleName());
 
     @FindBy(xpath = "//*[@class='col-top']")
     private WebElementFacade mainPanelBaseElement;
