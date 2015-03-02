@@ -1,5 +1,6 @@
-package bodaganj.panels;
+package bodaganj.panels.football_ua_panels;
 
+import bodaganj.panels.AbstractPanel;
 import net.thucydides.core.pages.WebElementFacade;
 
 import bodaganj.pages.AbstractPage;

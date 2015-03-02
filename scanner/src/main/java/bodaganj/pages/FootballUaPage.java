@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 
 import bodaganj.engine.ProjectLogger;
-import bodaganj.panels.MainPanel;
-import bodaganj.panels.MatchListPanel;
-import bodaganj.panels.NewsListPanel;
+import bodaganj.panels.football_ua_panels.MainPanel;
+import bodaganj.panels.football_ua_panels.MatchListPanel;
+import bodaganj.panels.football_ua_panels.NewsListPanel;
 
 /**
  * Created by bogdan on 01.03.15.
@@ -31,7 +31,7 @@ public class FootballUaPage extends AbstractPage {
     @FindBy(xpath = "//*[@class='col-left']")
     private WebElementFacade matchListPanelBaseElement;
 
-    public FootballUaPage(WebDriver driver) {
+    public FootballUaPage(final WebDriver driver) {
         super(driver);
     }
 
