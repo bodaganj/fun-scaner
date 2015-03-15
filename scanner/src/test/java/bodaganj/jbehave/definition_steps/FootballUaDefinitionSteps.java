@@ -4,9 +4,8 @@ import bodaganj.steps.FootballUaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 
-/**
- * Created by bogdan on 02.03.15.
- */
+// Created by bogdan on 02.03.15.
+
 public class FootballUaDefinitionSteps {
 
     @Steps

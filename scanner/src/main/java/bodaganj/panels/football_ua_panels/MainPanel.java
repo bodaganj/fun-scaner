@@ -6,9 +6,8 @@ import net.thucydides.core.pages.WebElementFacade;
 
 import bodaganj.pages.AbstractPage;
 
-/**
- * Created by bogdan on 01.03.15.
- */
+// Created by bogdan on 01.03.15.
+
 public class MainPanel extends AbstractPanel {
 
     @FindBy(xpath = ".//*[@class='col-right']")

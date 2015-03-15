@@ -1,12 +1,11 @@
 package bodaganj.engine;
 
+import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ch.qos.logback.classic.Level;
 
-/**
- * Created by Bogdan_Ganzha on 3/1/2015.
- */
+// Created by Bogdan_Ganzha on 3/1/2015.
+
 public final class ProjectLogger {
 
     private ProjectLogger() {

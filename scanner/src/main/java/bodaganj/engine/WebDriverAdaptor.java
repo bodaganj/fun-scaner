@@ -7,9 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by Bogdan_Ganzha on 3/1/2015.
- */
+// Created by Bogdan_Ganzha on 3/1/2015.
+
 public class WebDriverAdaptor implements WebDriver {
 
     private final WebElement wrappedElement;

@@ -15,9 +15,8 @@ import org.openqa.selenium.support.pagefactory.FieldDecorator;
 import bodaganj.engine.WebDriverAdaptor;
 import bodaganj.pages.AbstractPage;
 
-/**
- * Created by Bogdan_Ganzha on 3/1/2015.
- */
+// Created by Bogdan_Ganzha on 3/1/2015.
+
 public abstract class AbstractPanel {
 
     private final EnvironmentVariables environmentVariables;

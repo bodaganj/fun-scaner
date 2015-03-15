@@ -13,9 +13,8 @@ import bodaganj.panels.football_ua_panels.MainPanel;
 import bodaganj.panels.football_ua_panels.MatchListPanel;
 import bodaganj.panels.football_ua_panels.NewsListPanel;
 
-/**
- * Created by bogdan on 01.03.15.
- */
+// Created by bogdan on 01.03.15.
+
 @At(".*/football.ua")
 @DefaultUrl("http://football.ua/")
 public class FootballUaPage extends AbstractPage {

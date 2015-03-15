@@ -9,9 +9,8 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
-/**
- * Created by bogdan on 15.03.15.
- */
+// Created by bogdan on 15.03.15.
+
 public class MainNewsListPanel extends AbstractPanel {
 
     private static final Logger LOG = ProjectLogger.getLogger(MainNewsListPanel.class.getSimpleName());
