@@ -10,7 +10,7 @@ import org.jbehave.core.annotations.Then;
 public class BlogDefinitionStep {
 
     @Steps
-    BlogSteps blogSteps;
+    private BlogSteps blogSteps;
 
     @Then("I search for interesting posts")
     public void searchForInterestingPosts() {

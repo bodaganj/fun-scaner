@@ -25,10 +25,10 @@ public class FootballUaPage extends AbstractPage {
     @FindBy(xpath = "//*[@class='col-top']")
     private WebElementFacade mainPanelBaseElement;
 
-    @FindBy(xpath = "//*[@class='col-right']")
+    @FindBy(xpath = "(//*[@class='col-right'])[2]")
     private WebElementFacade newsListPanelBaseElement;
 
-    @FindBy(xpath = "//*[@class='col-left']")
+    @FindBy(xpath = "(//*[@class='col-left'])[2]")
     private WebElementFacade matchListPanelBaseElement;
 
     public FootballUaPage(final WebDriver driver) {
@@ -41,12 +41,12 @@ public class FootballUaPage extends AbstractPage {
     }
 
     public NewsListPanel getNewsListPanel() {
-        mainPanelBaseElement.waitUntilVisible();
-        return new NewsListPanel(mainPanelBaseElement, this);
+        newsListPanelBaseElement.waitUntilVisible();
+        return new NewsListPanel(newsListPanelBaseElement, this);
     }
 
     public MatchListPanel getMatchListPanel() {
-        mainPanelBaseElement.waitUntilVisible();
-        return new MatchListPanel(mainPanelBaseElement, this);
+        matchListPanelBaseElement.waitUntilVisible();
+        return new MatchListPanel(matchListPanelBaseElement, this);
     }
 }

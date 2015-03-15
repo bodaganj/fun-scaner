@@ -13,6 +13,6 @@ public class IsportSteps extends ScenarioSteps {
 
     @Step
     public void open_blog_tab_on_isport() {
-
+        String f = "";
     }
 }

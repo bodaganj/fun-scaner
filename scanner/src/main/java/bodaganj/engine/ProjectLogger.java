@@ -7,7 +7,7 @@ import ch.qos.logback.classic.Level;
 /**
  * Created by Bogdan_Ganzha on 3/1/2015.
  */
-public class ProjectLogger {
+public final class ProjectLogger {
 
     private ProjectLogger() {
     }

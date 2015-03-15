@@ -13,6 +13,11 @@ public class FootballUaSteps extends ScenarioSteps {
 
     @Step
     public void open_football_ua_website() {
+        footballUaPage.open();
+    }
 
+    @Step
+    public void open_first_isport_news() {
+        footballUaPage.getMainPanel().getMainNewsListPanel().clickOnFirstIsportNews();
     }
 }

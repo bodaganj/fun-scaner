@@ -10,7 +10,7 @@ import org.jbehave.core.annotations.When;
 public class IsportDefinitionStep {
 
     @Steps
-    IsportSteps isportSteps;
+    private IsportSteps isportSteps;
 
     @When("I open blog tab on isport")
     public void openBlogTabOnIsport() {
