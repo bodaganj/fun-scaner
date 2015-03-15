@@ -1,4 +1,4 @@
-package bodaganj.jbehave.defenition_steps;
+package bodaganj.jbehave.definition_steps;
 
 import bodaganj.steps.IsportSteps;
 import net.thucydides.core.annotations.Steps;
@@ -7,7 +7,7 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by bogdan on 02.03.15.
  */
-public class IsportDefenitionStep {
+public class IsportDefinitionStep {
 
     @Steps
     IsportSteps isportSteps;
