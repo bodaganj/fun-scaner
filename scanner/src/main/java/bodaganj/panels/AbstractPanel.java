@@ -18,7 +18,7 @@ import bodaganj.pages.AbstractPage;
 /**
  * Created by Bogdan_Ganzha on 3/1/2015.
  */
-public class AbstractPanel {
+public abstract class AbstractPanel {
 
     private final EnvironmentVariables environmentVariables;
     private AbstractPage driverDelegate;

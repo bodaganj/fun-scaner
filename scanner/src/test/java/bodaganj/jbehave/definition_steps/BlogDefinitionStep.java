@@ -1,19 +1,19 @@
-package bodaganj.jbehave.defenition_steps;
+package bodaganj.jbehave.definition_steps;
 
-import bodaganj.steps.IsportBlogSteps;
+import bodaganj.steps.BlogSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 
 /**
  * Created by bogdan on 02.03.15.
  */
-public class IsportBlogDefenitionStep {
+public class BlogDefinitionStep {
 
     @Steps
-    IsportBlogSteps isportBlogSteps;
+    BlogSteps blogSteps;
 
     @Then("I search for interesting posts")
     public void searchForInterestingPosts() {
-        isportBlogSteps.search_for_interesting_posts();
+        blogSteps.search_for_interesting_posts();
     }
 }

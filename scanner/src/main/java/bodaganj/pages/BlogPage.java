@@ -7,11 +7,11 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by bogdan on 02.03.15.
  */
-@At(".*/isport.ua/")
-@DefaultUrl("http://isport.ua/")
-public class IsportPage extends AbstractPage {
+@At(".*/blog.isport.ua/")
+@DefaultUrl("http://blog.isport.ua/")
+public class BlogPage extends AbstractPage {
 
-    public IsportPage(final WebDriver driver) {
-        super(driver);
+    public BlogPage(final WebDriver webDriver) {
+        super(webDriver);
     }
 }
