@@ -1,24 +1,25 @@
 package bodaganj.panels;
 
+import bodaganj.engine.ProjectLogger;
+import bodaganj.engine.WebDriverAdaptor;
+import bodaganj.pages.AbstractPage;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.locators.SmartElementLocatorFactory;
 import net.thucydides.core.annotations.locators.SmartFieldDecorator;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.pages.WebElementFacade;
 import net.thucydides.core.util.EnvironmentVariables;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
-
-import bodaganj.engine.WebDriverAdaptor;
-import bodaganj.pages.AbstractPage;
+import org.slf4j.Logger;
 
 // Created by Bogdan_Ganzha on 3/1/2015.
 
 public abstract class AbstractPanel {
 
+    private static final Logger LOG = ProjectLogger.getLogger(AbstractPanel.class.getSimpleName());
     private final EnvironmentVariables environmentVariables;
     private AbstractPage driverDelegate;
     private WebDriverAdaptor panelToWebDriver;
