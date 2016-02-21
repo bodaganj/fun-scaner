@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>bodaganj</groupId>
-    <artifactId>scanner</artifactId>
+    <artifactId>TestProject</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>Sample Thucydides project</name>
+    <name>Test JBehave vs Serenity project</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thucydides.version>0.9.268</thucydides.version>
         <thucydides.jbehave.version>0.9.268</thucydides.jbehave.version>
-        <webdriver.driver>firefox</webdriver.driver>
+
+        <!--TODO move to property file -->
+        <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
     <dependencies>
@@ -116,49 +118,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>maven2</id>
-            <activation>
-                <file>
-                    <missing>${basedir}</missing>
-                </file>
-            </activation>
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>net.thucydides.maven.plugins</groupId>
-                        <artifactId>maven-thucydides-plugin</artifactId>
-                        <version>${thucydides.version}</version>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
-        <profile>
-            <id>maven3</id>
-            <activation>
-                <file>
-                    <exists>${basedir}</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-site-plugin</artifactId>
-                        <version>3.2</version>
-                        <configuration>
-                            <reportPlugins>
-                                <plugin>
-                                    <groupId>net.thucydides.maven.plugins</groupId>
-                                    <artifactId>maven-thucydides-plugin</artifactId>
-                                    <version>${thucydides.version}</version>
-                                </plugin>
-                            </reportPlugins>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
