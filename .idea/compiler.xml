@@ -22,9 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="fun-scaner" />
         <module name="scanner" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fun-scaner" target="1.5" />
+      <module name="scanner" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
-
