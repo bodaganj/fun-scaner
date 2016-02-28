@@ -224,8 +224,8 @@
         <property name="severity" value="warning"/>
         <property name="max" value="700"/>
     </module>
-    <module name="SuppressionFilter">
+    <!--<module name="SuppressionFilter">
         <property name="file"
                   value="/home/bogdan/IdeaProjects/fun-scaner/src/test/resources/cleanCodeSettingsFiles/checkstyle-suppressions.xml"/>
-    </module>
+    </module>-->
 </module>
