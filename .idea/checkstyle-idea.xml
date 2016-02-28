@@ -10,6 +10,7 @@
         <entry key="location-1" value="CLASSPATH:/sun_checks.xml:The default Checkstyle rules" />
         <entry key="location-2" value="LOCAL_FILE:$PRJ_DIR$/src/test/resources/cleanCodeSettingsFiles/checkstyle_rules.xml:MyRule" />
         <entry key="property-2.resource.dir" value="${resource.dir}/cleanCodeSettingsFiles" />
+        <entry key="scan-before-checkin" value="false" />
         <entry key="suppress-errors" value="true" />
         <entry key="thirdparty-classpath" value="" />
       </map>
