@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
         "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
-
 <!--
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: ctco
+    Checkstyle-Configuration: ganzhab
     Description: none
 -->
 <module name="Checker">
@@ -51,7 +50,7 @@
             <property name="severity" value="warning"/>
         </module>
         <module name="LocalFinalVariableName">
-            <property name="severity" value="info"/>
+            <property name="severity" value="warning"/>
         </module>
         <module name="TypeName">
             <property name="severity" value="warning"/>
@@ -72,10 +71,6 @@
         <module name="ParameterAssignment">
             <property name="severity" value="error"/>
         </module>
-        <!--module name="RedundantThrows">
-          <property name="severity" value="info"/>
-          <property name="suppressLoadErrors" value="true"/>
-        </module-->
         <module name="IllegalImport">
             <property name="severity" value="warning"/>
         </module>
@@ -148,7 +143,7 @@
             <property name="severity" value="warning"/>
         </module>
         <module name="RedundantModifier">
-            <property name="severity" value="info"/>
+            <property name="severity" value="warning"/>
         </module>
         <module name="TrailingComment">
             <property name="severity" value="warning"/>
@@ -175,7 +170,7 @@
             <property name="severity" value="warning"/>
         </module>
         <module name="AvoidInlineConditionals">
-            <property name="severity" value="info"/>
+            <property name="severity" value="warning"/>
         </module>
         <module name="MultipleVariableDeclarations">
             <property name="severity" value="warning"/>
@@ -184,7 +179,7 @@
             <property name="severity" value="error"/>
         </module>
         <module name="EmptyStatement">
-            <property name="severity" value="info"/>
+            <property name="severity" value="warning"/>
         </module>
         <module name="ConstantName">
             <property name="severity" value="warning"/>
@@ -212,7 +207,7 @@
             <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
         </module>
         <module name="ModifierOrder">
-            <property name="severity" value="info"/>
+            <property name="severity" value="warning"/>
         </module>
         <module name="MethodCount">
             <property name="severity" value="warning"/>

@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 public class FootballUaPage extends AbstractPage {
 
     private static final Logger LOG = ProjectLogger.getLogger(FootballUaPage.class.getSimpleName());
+    private String MyField_Test = "sdsd";
 
     @FindBy(xpath = "//*[@class='col-top']")
     private WebElementFacade mainPanelBaseElement;
