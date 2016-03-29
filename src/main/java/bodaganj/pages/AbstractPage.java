@@ -12,22 +12,22 @@ import org.slf4j.Logger;
 
 public abstract class AbstractPage extends PageObject {
 
-    private static final Logger LOG = ProjectLogger.getLogger(AbstractPage.class.getSimpleName());
+	private static final Logger LOG = ProjectLogger.getLogger(AbstractPage.class.getSimpleName());
 
-    public AbstractPage(final WebDriver webDriver) {
-        super(webDriver);
-    }
+	public AbstractPage(final WebDriver webDriver) {
+		super(webDriver);
+	}
 
-    @WhenPageOpens
-    public void eventOpened() {
-        maximizeBrowser();
-    }
+	@WhenPageOpens
+	public void eventOpened() {
+		maximizeBrowser();
+	}
 
-    public void maximizeBrowser() {
-        final Window browserWindow = getDriver().manage().window();
-        browserWindow.maximize();
-        LOG.info("Browser got maximized, checking dimensions...");
-        Dimension actualDimension = browserWindow.getSize();
-        LOG.info("Width: {}, height: {}", actualDimension.getWidth(), actualDimension.getHeight());
-    }
+	public void maximizeBrowser() {
+		final Window browserWindow = getDriver().manage().window();
+		browserWindow.maximize();
+		LOG.info("Browser got maximized, checking dimensions...");
+		Dimension actualDimension = browserWindow.getSize();
+		LOG.info("Width: {}, height: {}", actualDimension.getWidth(), actualDimension.getHeight());
+	}
 }
