@@ -15,6 +15,7 @@ import java.util.Properties;
 
 /**
  * Created by bogdan on 28.03.16.
+ * Test framework
  */
 public class FunScanerProperties {
 
