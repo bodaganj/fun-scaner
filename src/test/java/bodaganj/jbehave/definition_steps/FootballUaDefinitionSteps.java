@@ -8,16 +8,16 @@ import org.jbehave.core.annotations.Given;
 
 public class FootballUaDefinitionSteps {
 
-    @Steps
-    private FootballUaSteps footballUaSteps;
+	@Steps
+	private FootballUaSteps footballUaSteps;
 
-    @Given("open football.ua website")
-    public void openFootballUaWebsite() {
-        footballUaSteps.open_football_ua_website();
-    }
+	@Given("open football.ua website")
+	public void openFootballUaWebsite() {
+		footballUaSteps.open_football_ua_website();
+	}
 
-    @Given("go to first isport news")
-    public void openFirstIsportLink() {
-        footballUaSteps.open_first_isport_news();
-    }
+	@Given("go to first isport news")
+	public void openFirstIsportLink() {
+		footballUaSteps.open_first_isport_news();
+	}
 }

@@ -10,16 +10,16 @@ import org.jbehave.core.annotations.BeforeScenario;
  */
 public class BeforeAndAfterScenario {
 
-    @Steps
-    private AbstractPage abstractPage;
+	@Steps
+	private AbstractPage abstractPage;
 
-    @BeforeScenario
-    public void beforeScenario() {
-        abstractPage.maximizeBrowser();
-    }
+	@BeforeScenario
+	public void beforeScenario() {
+		abstractPage.maximizeBrowser();
+	}
 
-    @AfterScenario
-    public void afterScenario() {
-        abstractPage.getDriver().close();
-    }
+	@AfterScenario
+	public void afterScenario() {
+		abstractPage.getDriver().close();
+	}
 }

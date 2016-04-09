@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 @DefaultUrl("http://isport.ua/")
 public class IsportPage extends AbstractPage {
 
-    public IsportPage(final WebDriver driver) {
-        super(driver);
-    }
+	public IsportPage(final WebDriver driver) {
+		super(driver);
+	}
 }

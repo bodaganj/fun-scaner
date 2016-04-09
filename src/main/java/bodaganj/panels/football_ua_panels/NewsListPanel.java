@@ -8,7 +8,7 @@ import net.thucydides.core.pages.WebElementFacade;
 
 public class NewsListPanel extends AbstractPanel {
 
-    public NewsListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
-        super(panelBaseLocation, driverDelegate);
-    }
+	public NewsListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+		super(panelBaseLocation, driverDelegate);
+	}
 }

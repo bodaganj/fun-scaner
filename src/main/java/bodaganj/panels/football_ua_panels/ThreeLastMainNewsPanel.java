@@ -8,7 +8,7 @@ import net.thucydides.core.pages.WebElementFacade;
 
 public class ThreeLastMainNewsPanel extends AbstractPanel {
 
-    public ThreeLastMainNewsPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
-        super(panelBaseLocation, driverDelegate);
-    }
+	public ThreeLastMainNewsPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+		super(panelBaseLocation, driverDelegate);
+	}
 }

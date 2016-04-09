@@ -8,7 +8,7 @@ import net.thucydides.core.pages.WebElementFacade;
 
 public class MatchListPanel extends AbstractPanel {
 
-    public MatchListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
-        super(panelBaseLocation, driverDelegate);
-    }
+	public MatchListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+		super(panelBaseLocation, driverDelegate);
+	}
 }

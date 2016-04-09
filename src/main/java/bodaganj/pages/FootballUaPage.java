@@ -17,33 +17,33 @@ import org.slf4j.Logger;
 @At(".*/football.ua")
 public class FootballUaPage extends AbstractPage {
 
-    private static final Logger LOG = ProjectLogger.getLogger(FootballUaPage.class.getSimpleName());
+	private static final Logger LOG = ProjectLogger.getLogger(FootballUaPage.class.getSimpleName());
 
-    @FindBy(xpath = "//*[@class='col-top']")
-    private WebElementFacade mainPanelBaseElement;
+	@FindBy(xpath = "//*[@class='col-top']")
+	private WebElementFacade mainPanelBaseElement;
 
-    @FindBy(xpath = "(//*[@class='col-right'])[2]")
-    private WebElementFacade newsListPanelBaseElement;
+	@FindBy(xpath = "(//*[@class='col-right'])[2]")
+	private WebElementFacade newsListPanelBaseElement;
 
-    @FindBy(xpath = "(//*[@class='col-left'])[2]")
-    private WebElementFacade matchListPanelBaseElement;
+	@FindBy(xpath = "(//*[@class='col-left'])[2]")
+	private WebElementFacade matchListPanelBaseElement;
 
-    public FootballUaPage(final WebDriver driver) {
-        super(driver);
-    }
+	public FootballUaPage(final WebDriver driver) {
+		super(driver);
+	}
 
-    public MainPanel getMainPanel() {
-        mainPanelBaseElement.waitUntilVisible();
-        return new MainPanel(mainPanelBaseElement, this);
-    }
+	public MainPanel getMainPanel() {
+		mainPanelBaseElement.waitUntilVisible();
+		return new MainPanel(mainPanelBaseElement, this);
+	}
 
-    public NewsListPanel getNewsListPanel() {
-        newsListPanelBaseElement.waitUntilVisible();
-        return new NewsListPanel(newsListPanelBaseElement, this);
-    }
+	public NewsListPanel getNewsListPanel() {
+		newsListPanelBaseElement.waitUntilVisible();
+		return new NewsListPanel(newsListPanelBaseElement, this);
+	}
 
-    public MatchListPanel getMatchListPanel() {
-        matchListPanelBaseElement.waitUntilVisible();
-        return new MatchListPanel(matchListPanelBaseElement, this);
-    }
+	public MatchListPanel getMatchListPanel() {
+		matchListPanelBaseElement.waitUntilVisible();
+		return new MatchListPanel(matchListPanelBaseElement, this);
+	}
 }

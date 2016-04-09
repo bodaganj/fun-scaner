@@ -8,15 +8,15 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class FootballUaSteps extends ScenarioSteps {
 
-    private FootballUaPage footballUaPage;
+	private FootballUaPage footballUaPage;
 
-    @Step
-    public void open_football_ua_website() {
-        footballUaPage.open();
-    }
+	@Step
+	public void open_football_ua_website() {
+		footballUaPage.open();
+	}
 
-    @Step
-    public void open_first_isport_news() {
-        footballUaPage.getMainPanel().getMainNewsListPanel().clickOnFirstIsportNews();
-    }
+	@Step
+	public void open_first_isport_news() {
+		footballUaPage.getMainPanel().getMainNewsListPanel().clickOnFirstIsportNews();
+	}
 }

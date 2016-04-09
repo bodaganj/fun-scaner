@@ -13,17 +13,17 @@ import java.util.List;
 
 public class MainNewsListPanel extends AbstractPanel {
 
-    private static final Logger LOG = ProjectLogger.getLogger(MainNewsListPanel.class.getSimpleName());
+	private static final Logger LOG = ProjectLogger.getLogger(MainNewsListPanel.class.getSimpleName());
 
-    @FindBy(xpath = ".//li[@class='isportNews']")
-    private List<WebElementFacade> isportNewsList;
+	@FindBy(xpath = ".//li[@class='isportNews']")
+	private List<WebElementFacade> isportNewsList;
 
-    public MainNewsListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
-        super(panelBaseLocation, driverDelegate);
-    }
+	public MainNewsListPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
+		super(panelBaseLocation, driverDelegate);
+	}
 
-    public void clickOnFirstIsportNews() {
-        LOG.info("Click on \"{}\" news in main menu", isportNewsList.get(0).getText());
-        isportNewsList.get(0).click();
-    }
+	public void clickOnFirstIsportNews() {
+		LOG.info("Click on \"{}\" news in main menu", isportNewsList.get(0).getText());
+		isportNewsList.get(0).click();
+	}
 }

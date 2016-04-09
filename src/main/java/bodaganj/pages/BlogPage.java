@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 @DefaultUrl("http://blog.isport.ua/")
 public class BlogPage extends AbstractPage {
 
-    public BlogPage(final WebDriver webDriver) {
-        super(webDriver);
-    }
+	public BlogPage(final WebDriver webDriver) {
+		super(webDriver);
+	}
 }

@@ -8,10 +8,10 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BlogSteps extends ScenarioSteps {
 
-    private BlogPage blogPage;
+	private BlogPage blogPage;
 
-    @Step
-    public void search_for_interesting_posts() {
+	@Step
+	public void search_for_interesting_posts() {
 
-    }
+	}
 }

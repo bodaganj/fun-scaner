@@ -8,10 +8,10 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class IsportSteps extends ScenarioSteps {
 
-    private IsportPage isportPage;
+	private IsportPage isportPage;
 
-    @Step
-    public void open_blog_tab_on_isport() {
-        String f = "";
-    }
+	@Step
+	public void open_blog_tab_on_isport() {
+		String f = "";
+	}
 }
