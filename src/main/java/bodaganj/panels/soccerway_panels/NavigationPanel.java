@@ -54,9 +54,11 @@ public class NavigationPanel extends AbstractPanel {
 		moreButton.click();
 	}
 
-	public void hoverCompetitionsButton() {
+	public CompetitionsPopupPanel hoverCompetitionsButton() {
 		Actions action = new Actions(getDriver());
 		action.moveToElement(competitionsButton).build().perform();
+		competitionsPopupPanel.waitUntilVisible();
+		return new CompetitionsPopupPanel(competitionsPopupPanel, getDriverDelegate());
 	}
 
 	public void hoverTeamsButton() {
@@ -64,10 +66,8 @@ public class NavigationPanel extends AbstractPanel {
 		action.moveToElement(teamsButton).build().perform();
 	}
 
-	public CompetitionsPopupPanel hoverMoreButton() {
+	public void hoverMoreButton() {
 		Actions action = new Actions(getDriver());
 		action.moveToElement(moreButton).build().perform();
-		competitionsPopupPanel.waitUntilVisible();
-		return new CompetitionsPopupPanel(competitionsPopupPanel, getDriverDelegate());
 	}
 }

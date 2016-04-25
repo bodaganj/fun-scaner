@@ -2,6 +2,7 @@ package bodaganj.panels.soccerway_panels;
 
 import bodaganj.pages.AbstractPage;
 import bodaganj.panels.AbstractPanel;
+import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 
 /**
@@ -10,7 +11,42 @@ import net.thucydides.core.pages.WebElementFacade;
  */
 public class CompetitionsPopupPanel extends AbstractPanel {
 
+	@FindBy(xpath = "(.//*[@class='col']//li)[2]")
+	private WebElementFacade aplButton;
+
+	@FindBy(xpath = "(.//*[@class='col']//li)[3]")
+	private WebElementFacade serieAButton;
+
+	@FindBy(xpath = "(.//*[@class='col']//li)[4]")
+	private WebElementFacade primeraButton;
+
+	@FindBy(xpath = "(.//*[@class='col']//li)[5]")
+	private WebElementFacade bundesLigaButton;
+
+	@FindBy(xpath = "(.//*[@class='col']//li)[10]")
+	private WebElementFacade chempionshipButton;
+
 	public CompetitionsPopupPanel(final WebElementFacade panelBaseLocation, final AbstractPage driverDelegate) {
 		super(panelBaseLocation, driverDelegate);
+	}
+
+	public void clickApl() {
+		aplButton.click();
+	}
+
+	public void clickSerieA() {
+		serieAButton.click();
+	}
+
+	public void clickPrimera() {
+		primeraButton.click();
+	}
+
+	public void clickBundesLiga() {
+		bundesLigaButton.click();
+	}
+
+	public void clickChempionship() {
+		chempionshipButton.click();
 	}
 }
