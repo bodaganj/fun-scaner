@@ -1,6 +1,7 @@
 package bodaganj.pages;
 
 import bodaganj.engine.ProjectLogger;
+import bodaganj.engine.dataItems.DataItemsFactory;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.Dimension;
@@ -14,13 +15,20 @@ public abstract class AbstractPage extends PageObject {
 
 	private static final Logger LOG = ProjectLogger.getLogger(AbstractPage.class.getSimpleName());
 
+	private DataItemsFactory dataItemsFactory;
+
 	public AbstractPage(final WebDriver webDriver) {
 		super(webDriver);
+		dataItemsFactory = DataItemsFactory.getInstance();
 	}
 
 	@WhenPageOpens
 	public void eventOpened() {
 		maximizeBrowser();
+	}
+
+	public DataItemsFactory getDataItemsFactory() {
+		return dataItemsFactory;
 	}
 
 	public void maximizeBrowser() {

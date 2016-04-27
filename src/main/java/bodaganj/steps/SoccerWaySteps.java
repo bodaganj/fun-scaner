@@ -27,6 +27,11 @@ public class SoccerWaySteps extends ScenarioSteps {
 	@Step
 	public void chose_top_division_of_specified_country(final String country) {
 		competitionsPage.clickOnSpecifiedCountry(country);
-		competitionsPage.clickOnTopDibision();
+		competitionsPage.clickOnTopDivision();
+	}
+
+	@Step
+	public void get_eurocup_aplicant_teams() {
+
 	}
 }

@@ -20,10 +20,11 @@ public class SoccerWayDefinitionSteps {
 		soccerWaySteps.click_competition_tab();
 	}
 
-	@When("search for a top six team in $country top division")
-	public void searchForTopSixTeamInLeague(final String country) {
+	@When("search for Euro cups participant teams in $country top division")
+	public void searchForEuroCupsParticipantsInLeague(final String country) {
 		soccerWaySteps.open_soccerway_website();
 		soccerWaySteps.click_competition_tab();
 		soccerWaySteps.chose_top_division_of_specified_country(country);
+		soccerWaySteps.get_eurocup_aplicant_teams();
 	}
 }
