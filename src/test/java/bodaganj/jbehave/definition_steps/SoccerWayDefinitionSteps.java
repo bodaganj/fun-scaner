@@ -25,6 +25,6 @@ public class SoccerWayDefinitionSteps {
 		soccerWaySteps.open_soccerway_website();
 		soccerWaySteps.click_competition_tab();
 		soccerWaySteps.chose_top_division_of_specified_country(country);
-		soccerWaySteps.get_eurocup_aplicant_teams();
+		soccerWaySteps.get_eurocup_applicant_teams();
 	}
 }

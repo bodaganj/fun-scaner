@@ -43,11 +43,11 @@ public class CompetitionsPage extends AbstractPage {
 		return getCertainClubs(LeagueClubStatus.CHAMPIONS_LEAGUE, LeagueClubStatus.CHAMPIONS_LEAGUE_QUALIFIERS);
 	}
 
-	public List<FootballClubItem> getEuropaLeaguePotentialParticipents() {
+	public List<FootballClubItem> getEuropaLeaguePotentialParticipants() {
 		return getCertainClubs(LeagueClubStatus.EUROPA_LEAGUE_QUALIFIERS, LeagueClubStatus.EUROPA_LEAGUE);
 	}
 
-	public List<FootballClubItem> getRelegationPotentialParticipents() {
+	public List<FootballClubItem> getRelegationPotentialParticipants() {
 		return getCertainClubs(LeagueClubStatus.RELEGATION, LeagueClubStatus.RELEGATION_QUALIFIERS);
 	}
 
