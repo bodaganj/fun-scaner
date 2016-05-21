@@ -8,8 +8,8 @@ import org.jbehave.core.annotations.Then;
  */
 public class UtilsDefinitionSteps {
 
-	@Then("check current eurocup participants from top leagues")
-	public void checkEurocupParticipants() {
-
+	@Then("show results and write current eurocup participants list to DB")
+	public void showResultsAndWriteToDb() {
+		System.out.println("Empty step!");
 	}
 }

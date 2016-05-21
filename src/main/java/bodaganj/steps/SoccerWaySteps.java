@@ -27,6 +27,7 @@ public class SoccerWaySteps extends ScenarioSteps {
 
 	@Step
 	public void open_soccerway_website() {
+		LOG.debug("Opening Soccer Way website");
 		soccerWayPage.open();
 	}
 
@@ -61,7 +62,6 @@ public class SoccerWaySteps extends ScenarioSteps {
 			LOG.info(europaLeagueTeam.getLeaguePosition() + separator + europaLeagueTeam.getClubName() +
 					leftParenthesis + europaLeagueTeam.getLeagueClubStatus() + rightParenthesis);
 		}
-
 		// write some data to DB here
 		String request = "SELECT DISTINCT first_name FROM test_table WHERE last_name = 'Ganzha';";
 		List<Map<String, String>> mapList = DbStepHelper.select(request);
