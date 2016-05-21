@@ -2,10 +2,20 @@ package bodaganj.jbehave;
 
 import bodaganj.engine.ProjectLogger;
 import bodaganj.utils.OperationSystem;
+import ch.lambdaj.Lambda;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.jbehave.ThucydidesJUnitStories;
+import org.jbehave.core.io.StoryFinder;
 import org.slf4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.List;
 
 public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 
@@ -25,6 +35,115 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 			LOG.error("Error instantiating FunScanerProperties", e);
 		}
 		setDriverAccordingToOS();
+		selectStoryFilesForRunningSuite();
+	}
+
+	private void selectStoryFilesForRunningSuite() {
+		String storiesPattern = environmentVariables.getProperty("fun.scanner.stories");
+		if (storiesPattern == null) {
+			LOG.debug("No suite key or pattern was provided, trying to run all stories in parallel");
+			parallelAcceptanceTestSuite(storyPaths());
+		} else {
+			List<String> suiteStoryPaths = getStoryPathsForSuite(storiesPattern);
+			if (suiteStoryPaths.isEmpty()) {
+				LOG.debug("No suite was found for the given {} key, trying to run as pattern not in parallel",
+						storiesPattern);
+				findStoriesCalled(storiesPattern);
+			} else {
+				parallelAcceptanceTestSuite(suiteStoryPaths);
+			}
+		}
+	}
+
+	private List<String> getStoryPathsForSuite(final String runningSuite) {
+		File suiteOfStories = findFile(runningSuite, new File(System.getProperty("suites.path")));
+		return collectStoryPathsFromSuiteFile(suiteOfStories);
+	}
+
+	private File findFile(final String searchedFile, final File searchInDirectory) {
+		File[] listOfAllFilesInDirectory = searchInDirectory.listFiles();
+		File suiteOfStories;
+		if (listOfAllFilesInDirectory != null) {
+			for (File singleFileFromDirectory : listOfAllFilesInDirectory) {
+				if (singleFileFromDirectory.isDirectory()) {
+					suiteOfStories = findFile(searchedFile, singleFileFromDirectory);
+					if (suiteOfStories != null) {
+						return suiteOfStories;
+					}
+				} else if (searchedFile.equalsIgnoreCase(singleFileFromDirectory.getName().replaceAll("\\..+$", ""))) {
+					return singleFileFromDirectory;
+				}
+			}
+		}
+		LOG.debug("There is no suite: {} in directory {}", searchedFile, searchInDirectory);
+		return null;
+	}
+
+	private List<String> collectStoryPathsFromSuiteFile(final File suiteFile) {
+		if (null == suiteFile) {
+			return Collections.emptyList();
+		}
+		List<String> storyPaths;
+		try {
+			storyPaths = Files.readAllLines(Paths.get(suiteFile.getPath()), Charset.defaultCharset());
+		} catch (IOException e) {
+			LOG.error("Failed to open suite file, exiting", e);
+			throw new RuntimeException(e);
+		}
+		LOG.info("Got story paths {}", storyPaths);
+		return storyPaths;
+	}
+
+	// Stories invocation in parallel
+	private void parallelAcceptanceTestSuite(final List<String> storyPaths) {
+		List<String> stories = new StoryFinder().findPaths(System.getProperty("stories.path"), storyPaths, null);
+		Integer agentNumber = environmentVariables.getPropertyAsInteger("parallel.agent.number", 1);
+		Integer agentTotal = environmentVariables.getPropertyAsInteger("parallel.agent.total", 1);
+		failIfAgentIsNotConfiguredCorrectly(agentNumber, agentTotal);
+		failIfThereAreMoreAgentsThanStories(agentTotal, stories.size());
+
+		// The reminder should work out to be either be zero or one.
+		int reminder = stories.size() % agentTotal;
+		int storiesPerAgent = stories.size() / agentTotal;
+
+		int startPos = storiesPerAgent * (agentNumber - 1);
+		int endPos = startPos + storiesPerAgent;
+		if (agentNumber.equals(agentTotal)) {
+			// In the case of an uneven number the last agent picks up the extra story file.
+			endPos += reminder;
+		}
+		List<String> finalStories = stories.subList(startPos, endPos);
+
+		outputWhichStoriesAreBeingRun(finalStories);
+		findStoriesCalled(Lambda.join(finalStories, ";"));
+	}
+
+	private void failIfAgentIsNotConfiguredCorrectly(final Integer agentPosition, final Integer agentCount) {
+		if (agentPosition == null) {
+			throw new RuntimeException("The agent number needs to be specified");
+		} else if (agentCount == null) {
+			throw new RuntimeException("The agent total needs to be specified");
+		} else if (agentPosition < 1) {
+			throw new RuntimeException("The agent number is invalid");
+		} else if (agentCount < 1) {
+			throw new RuntimeException("The agent total is invalid");
+		} else if (agentPosition > agentCount) {
+			throw new RuntimeException(String.format("There were %d agents in total specified and this agent is " +
+					"outside that range (it is specified as %d)", agentPosition, agentCount));
+		}
+	}
+
+	private void failIfThereAreMoreAgentsThanStories(final Integer agentCount, final int storyCount) {
+		if (storyCount < agentCount) {
+			throw new RuntimeException("There are more agents then there are stories, this agent isn't necessary");
+		}
+	}
+
+	private void outputWhichStoriesAreBeingRun(final List<String> stories) {
+		LOG.info("Running {} stories: ", stories.size());
+		for (String story : stories) {
+			LOG.info(" - {}", story);
+		}
 	}
 
 	private void setDriverAccordingToOS() {
@@ -58,44 +177,44 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 		}
 	}
 
-	public void setChromeDriverLinux64() {
+	private void setChromeDriverLinux64() {
 		System.setProperty(CHROME_DRIVER, "drivers/chromedriver.exe");
 	}
 
 	//TODO to be added all drivers mentioned below
-	public void setChromeDriverLinux32() {
+	private void setChromeDriverLinux32() {
 		System.setProperty(CHROME_DRIVER, "drivers/linux/32bit/chromedriver");
 	}
 
-	public void setChromeDriverWindows() {
+	private void setChromeDriverWindows() {
 		System.setProperty(CHROME_DRIVER, "drivers/windows/chromedriver.exe");
 	}
 
-	public void setChromeDriverOsx() {
+	private void setChromeDriverOsx() {
 		System.setProperty(CHROME_DRIVER, "drivers/osx/chromedriver");
 	}
 
-	public void setPhantomJSDriverLinux32() {
+	private void setPhantomJSDriverLinux32() {
 		System.setProperty(PHANTOMJS_DRIVER, "drivers/linux/32bit/phantomjs");
 	}
 
-	public void setPhantomJSDriverLinux64() {
+	private void setPhantomJSDriverLinux64() {
 		System.setProperty(PHANTOMJS_DRIVER, "drivers/linux/64bit/phantomjs");
 	}
 
-	public void setPhantomJSDriverWindows() {
+	private void setPhantomJSDriverWindows() {
 		System.setProperty(PHANTOMJS_DRIVER, "drivers/windows/phantomjs.exe");
 	}
 
-	public void setPhantomJSDriverOsx() {
+	private void setPhantomJSDriverOsx() {
 		System.setProperty("webdriver.phantomjs.driver", "drivers/osx/phantomjs");
 	}
 
-	public void setIeDriverWindows32() {
+	private void setIeDriverWindows32() {
 		System.setProperty(IE_DRIVER, "drivers/windows/32bit/iedriver.exe");
 	}
 
-	public void setIeDriverWindows64() {
+	private void setIeDriverWindows64() {
 		System.setProperty(IE_DRIVER, "drivers/windows/64bit/iedriver.exe");
 	}
 }
