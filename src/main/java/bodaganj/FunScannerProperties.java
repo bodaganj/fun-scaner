@@ -17,24 +17,24 @@ import java.util.Properties;
  * Created by bogdan on 28.03.16.
  * Test framework
  */
-public class FunScanerProperties {
+public final class FunScannerProperties {
 
 	private static final String THUCYDIDES_COMMON_PROPERTY_FILE = "src/test/resources/properties/thucydides_common" +
 			".properties";
 	private static final String PROJECT_PROPERTY_FILE = "src/test/resources/properties/common.properties";
-	private static final Logger LOG = ProjectLogger.getLogger(FunScanerProperties.class.getSimpleName());
+	private static final Logger LOG = ProjectLogger.getLogger(FunScannerProperties.class.getSimpleName());
 	private static EnvironmentVariables environmentVariables = Injectors.getInjector().getProvider
 			(EnvironmentVariables.class).get();
-	private static FunScanerProperties instance = new FunScanerProperties();
+	private static FunScannerProperties instance = new FunScannerProperties();
 	private Properties properties;
 
-	private FunScanerProperties() {
+	private FunScannerProperties() {
 		this.properties = new Properties();
 		loadThucydidesPropertiesToEnvironment();
 		loadPropertiesFromFiles(PROJECT_PROPERTY_FILE);
 	}
 
-	public static FunScanerProperties getInstance() {
+	public static FunScannerProperties getInstance() {
 		return instance;
 	}
 

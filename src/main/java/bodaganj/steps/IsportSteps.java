@@ -1,6 +1,6 @@
 package bodaganj.steps;
 
-import bodaganj.pages.IsportPage;
+import bodaganj.pages.footballUa.IsportPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

@@ -1,5 +1,6 @@
-package bodaganj.pages;
+package bodaganj.pages.footballUa;
 
+import bodaganj.pages.AbstractPage;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebDriver;

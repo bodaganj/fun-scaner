@@ -30,9 +30,9 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 
 	public AcceptanceTestSuite() {
 		try {
-			Class.forName("bodaganj.FunScanerProperties");
+			Class.forName("bodaganj.FunScannerProperties");
 		} catch (ClassNotFoundException e) {
-			LOG.error("Error instantiating FunScanerProperties", e);
+			LOG.error("Error instantiating FunScannerProperties", e);
 		}
 		setDriverAccordingToOS();
 		selectStoryFilesForRunningSuite();

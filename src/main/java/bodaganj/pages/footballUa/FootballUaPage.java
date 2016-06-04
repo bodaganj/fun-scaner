@@ -1,6 +1,7 @@
-package bodaganj.pages;
+package bodaganj.pages.footballUa;
 
 import bodaganj.engine.ProjectLogger;
+import bodaganj.pages.AbstractPage;
 import bodaganj.panels.football_ua_panels.MainPanel;
 import bodaganj.panels.football_ua_panels.MatchListPanel;
 import bodaganj.panels.football_ua_panels.NewsListPanel;
