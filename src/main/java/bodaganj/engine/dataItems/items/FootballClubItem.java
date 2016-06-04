@@ -19,7 +19,7 @@ public class FootballClubItem extends AbstractDataItem {
 	@FindBy(xpath = ".//td[contains(@class,'rank ')]")
 	private WebElementFacade leaguePosition;
 
-	@FindBy(xpath = ".//td[@class='text team large-link']")
+	@FindBy(xpath = ".//td[@class='text team large-link']/a")
 	private WebElementFacade clubName;
 
 	@FindBy(xpath = ".//td[@class='number total mp']")
@@ -55,7 +55,7 @@ public class FootballClubItem extends AbstractDataItem {
 	}
 
 	public String getClubName() {
-		return clubName.getText();
+		return clubName.getAttribute("title").replace("'", "");
 	}
 
 	public String getPlayedGameNumber() {

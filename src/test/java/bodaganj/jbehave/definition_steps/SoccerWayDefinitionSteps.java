@@ -16,17 +16,17 @@ public class SoccerWayDefinitionSteps {
 	@Steps
 	private SoccerWaySteps soccerWaySteps;
 
-	@Given("open SoccerWay website and navigate to Competition tab")
+	@Given("open SoccerWay website")
 	public void openSoccerWayWebsite() {
 		soccerWaySteps.open_soccerway_website();
-		soccerWaySteps.click_competition_tab();
 	}
 
 	@When("search for Euro cups participant teams in $country top division(s)")
 	public void searchForEuroCupsParticipantsInLeague(final List<String> country) {
 		for (String countryName : country) {
+			soccerWaySteps.click_competition_tab();
 			soccerWaySteps.chose_top_division_of_specified_country(countryName.trim());
-			soccerWaySteps.get_eurocup_applicant_teams();
+			soccerWaySteps.get_euro_cup_applicant_teams();
 		}
 	}
 }

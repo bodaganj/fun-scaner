@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class CompetitionsPage extends AbstractPage {
 
-	@FindBy(xpath = "(.//*[@class='expandable loaded expanded']//li)[1]")
+	@FindBy(xpath = "(.//*[@class='expandable  expanded loaded']//li)[1]//a")
 	private WebElementFacade topDivisionOfSelectedCountryButton;
 
 	@FindBy(xpath = "//div[@class='block_competition_tables real-content clearfix ']")
