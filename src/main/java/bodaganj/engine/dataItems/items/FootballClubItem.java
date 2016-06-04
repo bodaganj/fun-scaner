@@ -4,6 +4,8 @@ import bodaganj.engine.ProjectLogger;
 import bodaganj.engine.dataItems.AbstractDataItem;
 import bodaganj.pages.AbstractPage;
 import bodaganj.utils.LeagueClubStatus;
+import bodaganj.utils.session.Session;
+import bodaganj.utils.session.SessionKey;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 import org.slf4j.Logger;
@@ -46,8 +48,15 @@ public class FootballClubItem extends AbstractDataItem {
 	@FindBy(xpath = ".//td[@class='number points']")
 	private WebElementFacade pointsAmount;
 
+	private String country;
+
 	public FootballClubItem(final AbstractPage driverDelegate) {
 		super(driverDelegate);
+		country = Session.getS(SessionKey.COUNTRY);
+	}
+
+	public String getCountry() {
+		return country;
 	}
 
 	public String getLeaguePosition() {

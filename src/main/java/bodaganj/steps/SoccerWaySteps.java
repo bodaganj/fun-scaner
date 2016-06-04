@@ -6,10 +6,12 @@ import bodaganj.jdbc.DbQueriesHelper;
 import bodaganj.jdbc.DbStepHelper;
 import bodaganj.pages.soccerWay.CompetitionsPage;
 import bodaganj.pages.soccerWay.SoccerWayPage;
+import bodaganj.utils.LeagueClubStatus;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -44,26 +46,35 @@ public class SoccerWaySteps extends ScenarioSteps {
 
 	@Step
 	public void get_euro_cup_applicant_teams() {
-		List<FootballClubItem> championsLeagueTeams = competitionsPage.getChampionsLeaguePotentialParticipants();
-		List<FootballClubItem> europaLeagueTeams = competitionsPage.getEuropaLeaguePotentialParticipants();
+		List<FootballClubItem> footballClubItems = competitionsPage.getAllFootballClubs();
+		List<FootballClubItem> championsLeagueTeams = new ArrayList<>();
+		List<FootballClubItem> europaLeagueTeams = new ArrayList<>();
+		for (FootballClubItem footballClubItem : footballClubItems) {
+			if (footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE) || footballClubItem
+					.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE_QUALIFIERS)) {
+				championsLeagueTeams.add(footballClubItem);
+			}
+		}
+		for (FootballClubItem footballClubItem : footballClubItems) {
+			if (footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE) || footballClubItem
+					.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE_QUALIFIERS)) {
+				europaLeagueTeams.add(footballClubItem);
+			}
+		}
 		assertThat(championsLeagueTeams).as("Champions League list can't be empty!").isNotEmpty();
 		assertThat(europaLeagueTeams).as("Europa League list can't be empty!").isNotEmpty();
 		LOG.info("Champions League potential participants:");
-		String separator = " -> ";
-		String leftParenthesis = " (";
-		String rightParenthesis = ")";
-		for (FootballClubItem championsLeagueTeam : championsLeagueTeams) {
+		writeInfoToDB(championsLeagueTeams);
+		LOG.info("Europa League potential participants:");
+		writeInfoToDB(europaLeagueTeams);
+	}
+
+	private void writeInfoToDB(final List<FootballClubItem> teamsList) {
+		for (FootballClubItem championsLeagueTeam : teamsList) {
 			String request = DbQueriesHelper.replaceRequestForEuroCupParticipants(championsLeagueTeam);
 			DbStepHelper.update(request);
-			LOG.info(championsLeagueTeam.getLeaguePosition() + separator + championsLeagueTeam.getClubName() +
-					leftParenthesis + championsLeagueTeam.getLeagueClubStatus() + rightParenthesis);
-		}
-		LOG.info("Europa League potential participants:");
-		for (FootballClubItem europaLeagueTeam : europaLeagueTeams) {
-			String request = DbQueriesHelper.replaceRequestForEuroCupParticipants(europaLeagueTeam);
-			DbStepHelper.update(request);
-			LOG.info(europaLeagueTeam.getLeaguePosition() + separator + europaLeagueTeam.getClubName() +
-					leftParenthesis + europaLeagueTeam.getLeagueClubStatus() + rightParenthesis);
+			LOG.info(championsLeagueTeam.getLeaguePosition() + " -> " + championsLeagueTeam.getClubName() +
+					" (" + championsLeagueTeam.getLeagueClubStatus() + ")");
 		}
 	}
 }
