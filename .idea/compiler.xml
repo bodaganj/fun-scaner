@@ -32,9 +32,8 @@
         <module name="fun-scaner" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="fun-scaner" target="1.8" />
-      <module name="scanner" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
