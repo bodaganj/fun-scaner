@@ -31,9 +31,17 @@
         <processorPath useClasspath="true" />
         <module name="fun-scaner" />
       </profile>
+      <profile default="false" name="Annotation profile for fun-scanner" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="fun-scanner" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="fun-scaner" target="1.8" />
+      <module name="fun-scanner" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
