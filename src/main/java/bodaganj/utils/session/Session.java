@@ -13,10 +13,9 @@ import static java.lang.String.format;
  * Created by bogdan on 04.06.16.
  * Test framework
  */
-public class Session {
+public final class Session {
 
 	private static final Logger LOG = ProjectLogger.getLogger(Session.class.getSimpleName());
-	private static final String FAILED_TO_STRING_INVOCATION = "Failed toString() invocation on an object";
 
 	private Session() {
 	}

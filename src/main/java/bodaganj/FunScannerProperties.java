@@ -5,6 +5,7 @@ import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.util.PropertiesFileLocalPreferences;
 import org.apache.commons.lang.StringUtils;
+import org.fest.assertions.api.Assertions;
 import org.slf4j.Logger;
 
 import java.io.FileInputStream;
@@ -74,7 +75,7 @@ public final class FunScannerProperties {
 			LOG.debug("System properties were successfully loaded, file: {}", fileName);
 		} catch (IOException e) {
 			LOG.error("error loading properties from file {}", fileName, e);
-			throw new RuntimeException(e);
+			Assertions.fail("Error occurs during loading properties!");
 		}
 	}
 

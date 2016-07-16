@@ -124,9 +124,7 @@ public class FootballClubItem extends AbstractDataItem {
 
 	@Override
 	public String toString() {
-		StringBuffer stringBuffer = new StringBuffer().append("Football club: ").append(getClubName()).append(", " +
-				"league position - ").append(getLeaguePosition()).append(", points amount - ").append(getPointsAmount
-				());
-		return stringBuffer.toString();
+		return "Football club: " + getClubName() + ", league position - " + getLeaguePosition() + ", points amount - "
+				+ getPointsAmount();
 	}
 }

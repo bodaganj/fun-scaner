@@ -6,6 +6,7 @@ import ch.lambdaj.Lambda;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.jbehave.ThucydidesJUnitStories;
+import org.fest.assertions.api.Assertions;
 import org.jbehave.core.io.StoryFinder;
 import org.slf4j.Logger;
 
@@ -83,12 +84,12 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 		if (null == suiteFile) {
 			return Collections.emptyList();
 		}
-		List<String> storyPaths;
+		List<String> storyPaths = null;
 		try {
 			storyPaths = Files.readAllLines(Paths.get(suiteFile.getPath()), Charset.defaultCharset());
 		} catch (IOException e) {
 			LOG.error("Failed to open suite file, exiting", e);
-			throw new RuntimeException(e);
+			Assertions.fail("Failed to open suite file");
 		}
 		LOG.info("Got story paths {}", storyPaths);
 		return storyPaths;
@@ -120,22 +121,22 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 
 	private void failIfAgentIsNotConfiguredCorrectly(final Integer agentPosition, final Integer agentCount) {
 		if (agentPosition == null) {
-			throw new RuntimeException("The agent number needs to be specified");
+			Assertions.fail("The agent number needs to be specified");
 		} else if (agentCount == null) {
-			throw new RuntimeException("The agent total needs to be specified");
+			Assertions.fail("The agent total needs to be specified");
 		} else if (agentPosition < 1) {
-			throw new RuntimeException("The agent number is invalid");
+			Assertions.fail("The agent number is invalid");
 		} else if (agentCount < 1) {
-			throw new RuntimeException("The agent total is invalid");
+			Assertions.fail("The agent total is invalid");
 		} else if (agentPosition > agentCount) {
-			throw new RuntimeException(String.format("There were %d agents in total specified and this agent is " +
+			Assertions.fail(String.format("There were %d agents in total specified and this agent is " +
 					"outside that range (it is specified as %d)", agentPosition, agentCount));
 		}
 	}
 
 	private void failIfThereAreMoreAgentsThanStories(final Integer agentCount, final int storyCount) {
 		if (storyCount < agentCount) {
-			throw new RuntimeException("There are more agents then there are stories, this agent isn't necessary");
+			Assertions.fail("There are more agents then there are stories, this agent isn't necessary");
 		}
 	}
 
