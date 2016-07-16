@@ -52,7 +52,10 @@ public final class FunScannerProperties {
 					LOG.debug("System property {} was successfully added, --> {}", propertyName, localPropertyValue);
 				}
 			}
-			new PropertiesFileLocalPreferences(environmentVariables);
+			PropertiesFileLocalPreferences propertiesFileLocalPreferences = new PropertiesFileLocalPreferences
+					(environmentVariables);
+			String absolutePath = propertiesFileLocalPreferences.getHomeDirectory().getAbsolutePath();
+			LOG.debug("Absolute path to local properties file --> {}", absolutePath);
 		} catch (IOException e) {
 			LOG.error("error loading thucydides properties", e);
 		}

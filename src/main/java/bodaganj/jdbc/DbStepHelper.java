@@ -65,13 +65,17 @@ public final class DbStepHelper {
 				Assertions.fail("Query has found 0 rows");
 			}
 			rows = new ArrayList<>();
-			do {
-				final Map<String, String> row = new LinkedHashMap<>();
-				for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-					row.put(columns.get(columnIndex), resultSet.getString(columnIndex + 1));
-				}
-				rows.add(row);
-			} while (resultSet.next());
+			if (!(columns == null)) {
+				do {
+					final Map<String, String> row = new LinkedHashMap<>();
+					for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+						row.put(columns.get(columnIndex), resultSet.getString(columnIndex + 1));
+					}
+					rows.add(row);
+				} while (resultSet.next());
+			} else {
+				Assertions.fail("columns is null");
+			}
 		} catch (SQLException e) {
 			Fail.fail("SQL statement was not executed successfully {}", e);
 		}
@@ -84,22 +88,23 @@ public final class DbStepHelper {
 	 */
 	public static List<Map<String, String>> select(final String selectQuery, final List<String>
 			columnsToFilterResultsBy) {
-		List<Map<String, String>> resultTable = select(selectQuery);
-		if (resultTable == null) {
-			Assertions.fail("Result table is null");
-		}
 		List<Map<String, String>> filteredResultTable = new ArrayList<>();
-		for (int rowIndex = 0; rowIndex < resultTable.size(); rowIndex++) {
-			LOG.info("-------- Row: {}", rowIndex);
-			Map<String, String> row = resultTable.get(rowIndex);
-			Map<String, String> newRow = new LinkedHashMap<>();
-			for (final String field : columnsToFilterResultsBy) {
-				if (row.containsKey(field)) {
-					newRow.put(field, row.get(field));
-					LOG.info("Field: {}}, Result: {}", field, row.get(field));
+		List<Map<String, String>> resultTable = select(selectQuery);
+		if (!(resultTable == null)) {
+			for (int rowIndex = 0; rowIndex < resultTable.size(); rowIndex++) {
+				LOG.info("-------- Row: {}", rowIndex);
+				Map<String, String> row = resultTable.get(rowIndex);
+				Map<String, String> newRow = new LinkedHashMap<>();
+				for (final String field : columnsToFilterResultsBy) {
+					if (row.containsKey(field)) {
+						newRow.put(field, row.get(field));
+						LOG.info("Field: {}}, Result: {}", field, row.get(field));
+					}
 				}
+				filteredResultTable.add(newRow);
 			}
-			filteredResultTable.add(newRow);
+		} else {
+			Assertions.fail("Result table is null");
 		}
 		return filteredResultTable;
 	}
