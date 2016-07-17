@@ -1,4 +1,4 @@
-package bodaganj.jbehave.definition_steps;
+package bodaganj.jbehave.definitionSteps;
 
 import bodaganj.steps.UtilitySteps;
 import net.thucydides.core.annotations.Steps;

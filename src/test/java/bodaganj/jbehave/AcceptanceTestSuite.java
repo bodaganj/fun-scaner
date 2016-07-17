@@ -21,6 +21,7 @@ import java.util.List;
 public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 
 	private static final Logger LOG = ProjectLogger.getLogger(AcceptanceTestSuite.class.getSimpleName());
+	private static final String UNDEFINE_OS_MESSAGE = "Can't define OS";
 	private static final String X64_ARCH = "amd64";
 	private static final String OS_ARCH = "os.arch";
 	private static final String CHROME_DRIVER = "webdriver.chrome.driver";
@@ -61,6 +62,7 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 		return collectStoryPathsFromSuiteFile(suiteOfStories);
 	}
 
+	@SuppressWarnings("CheckStyle")
 	private File findFile(final String searchedFile, final File searchInDirectory) {
 		File[] listOfAllFilesInDirectory = searchInDirectory.listFiles();
 		File suiteOfStories;
@@ -150,7 +152,7 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 	private void setDriverAccordingToOS() {
 		OperationSystem.OSType osType = OperationSystem.getOperatingSystemType();
 		switch (osType) {
-			case Windows:
+			case WINDOWS:
 				setChromeDriverWindows();
 				setPhantomJSDriverWindows();
 				if (X64_ARCH.equals(System.getProperty(OS_ARCH))) {
@@ -159,11 +161,11 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 					setIeDriverWindows32();
 				}
 				break;
-			case MacOS:
+			case MAC_OS:
 				setChromeDriverOsx();
 				setPhantomJSDriverOsx();
 				break;
-			case Linux:
+			case LINUX:
 				if (X64_ARCH.equals(System.getProperty(OS_ARCH))) {
 					setChromeDriverLinux64();
 //					setPhantomJSDriverLinux64();
@@ -172,8 +174,11 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 					setPhantomJSDriverLinux32();
 				}
 				break;
-			case Other:
-				LOG.error("Can't define OS");
+			case OTHER:
+				LOG.error(UNDEFINE_OS_MESSAGE);
+				break;
+			default:
+				LOG.error(UNDEFINE_OS_MESSAGE);
 				break;
 		}
 	}

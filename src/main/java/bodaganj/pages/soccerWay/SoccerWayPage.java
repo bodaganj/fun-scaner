@@ -1,10 +1,10 @@
 package bodaganj.pages.soccerWay;
 
 import bodaganj.pages.AbstractPage;
-import bodaganj.panels.soccerway_panels.FooterPanel;
-import bodaganj.panels.soccerway_panels.HeaderPanel;
-import bodaganj.panels.soccerway_panels.MainPanel;
-import bodaganj.panels.soccerway_panels.NavigationPanel;
+import bodaganj.panels.soccerwayPanels.FooterPanel;
+import bodaganj.panels.soccerwayPanels.HeaderPanel;
+import bodaganj.panels.soccerwayPanels.MainPanel;
+import bodaganj.panels.soccerwayPanels.NavigationPanel;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;

@@ -1,4 +1,4 @@
-package bodaganj.panels.soccerway_panels;
+package bodaganj.panels.soccerwayPanels;
 
 import bodaganj.pages.AbstractPage;
 import bodaganj.panels.AbstractPanel;

@@ -99,6 +99,7 @@ public class FootballClubItem extends AbstractDataItem {
 		return pointsAmount.getText();
 	}
 
+	@SuppressWarnings("CheckStyle")
 	public LeagueClubStatus getLeagueClubStatus() {
 		String classAttribute = leaguePosition.getAttribute("class");
 		switch (classAttribute) {
