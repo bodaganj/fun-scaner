@@ -2,8 +2,8 @@ package bodaganj.panels.soccerwayPanels;
 
 import bodaganj.pages.AbstractPage;
 import bodaganj.panels.AbstractPanel;
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.WebElementFacade;
+import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by bogdan on 09.04.16.

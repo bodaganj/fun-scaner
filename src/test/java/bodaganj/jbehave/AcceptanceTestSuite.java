@@ -5,7 +5,7 @@ import bodaganj.utils.OperationSystem;
 import ch.lambdaj.Lambda;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
-import net.thucydides.jbehave.ThucydidesJUnitStories;
+import net.serenitybdd.jbehave.SerenityStories;
 import org.fest.assertions.api.Assertions;
 import org.jbehave.core.io.StoryFinder;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
-public class AcceptanceTestSuite extends ThucydidesJUnitStories {
+public class AcceptanceTestSuite extends SerenityStories {
 
 	private static final Logger LOG = ProjectLogger.getLogger(AcceptanceTestSuite.class.getSimpleName());
 	private static final String UNDEFINE_OS_MESSAGE = "Can't define OS";
@@ -184,7 +184,7 @@ public class AcceptanceTestSuite extends ThucydidesJUnitStories {
 	}
 
 	private void setChromeDriverLinux64() {
-		System.setProperty(CHROME_DRIVER, "drivers/chromedriver.exe");
+		System.setProperty(CHROME_DRIVER, "drivers/chromedriver");
 	}
 
 	//TODO to be added all drivers mentioned below

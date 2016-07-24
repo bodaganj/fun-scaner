@@ -5,11 +5,11 @@ import bodaganj.panels.soccerwayPanels.FooterPanel;
 import bodaganj.panels.soccerwayPanels.HeaderPanel;
 import bodaganj.panels.soccerwayPanels.MainPanel;
 import bodaganj.panels.soccerwayPanels.NavigationPanel;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by bogdan on 09.04.16.

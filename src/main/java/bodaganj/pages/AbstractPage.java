@@ -2,8 +2,8 @@ package bodaganj.pages;
 
 import bodaganj.engine.ProjectLogger;
 import bodaganj.engine.dataItems.DataItemsFactory;
+import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.WhenPageOpens;
-import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Window;

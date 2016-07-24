@@ -5,13 +5,13 @@ import bodaganj.pages.AbstractPage;
 import bodaganj.utils.LeagueClubStatus;
 import bodaganj.utils.session.Session;
 import bodaganj.utils.session.SessionKey;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.findby.By;
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

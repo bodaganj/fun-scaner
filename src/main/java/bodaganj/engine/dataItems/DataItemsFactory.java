@@ -3,11 +3,11 @@ package bodaganj.engine.dataItems;
 import bodaganj.engine.ProjectLogger;
 import bodaganj.engine.WebDriverAdaptor;
 import bodaganj.pages.AbstractPage;
-import net.thucydides.core.annotations.locators.SmartElementLocatorFactory;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.locators.SmartFieldDecorator;
-import net.thucydides.core.pages.WebElementFacade;
 import org.apache.commons.lang3.time.StopWatch;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
 import org.slf4j.Logger;
@@ -62,7 +62,7 @@ public class DataItemsFactory {
 	AbstractPage driverDelegate) throws ReflectiveOperationException {
 		T dataItem = clazz.getDeclaredConstructor(AbstractPage.class).newInstance(driverDelegate);
 		WebDriverAdaptor webDriverAdaptor = new WebDriverAdaptor(baseElement, driverDelegate.getDriver());
-		ElementLocatorFactory finder = new SmartElementLocatorFactory(webDriverAdaptor, 10);
+		ElementLocatorFactory finder = new DefaultElementLocatorFactory(webDriverAdaptor);
 		FieldDecorator decorator = new SmartFieldDecorator(finder, webDriverAdaptor, driverDelegate);
 		PageFactory.initElements(decorator, dataItem);
 		logDataItem(dataItem);

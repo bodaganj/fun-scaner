@@ -2,14 +2,14 @@ package bodaganj.panels;
 
 import bodaganj.engine.WebDriverAdaptor;
 import bodaganj.pages.AbstractPage;
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.annotations.locators.SmartElementLocatorFactory;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.locators.SmartFieldDecorator;
 import net.thucydides.core.guice.Injectors;
-import net.thucydides.core.pages.WebElementFacade;
 import net.thucydides.core.util.EnvironmentVariables;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
 
@@ -36,8 +36,7 @@ public abstract class AbstractPanel {
 		this.driverDelegate = driverDelegate;
 		this.timeoutInMilliseconds = driverDelegate.waitForTimeoutInMilliseconds();
 		this.panelToWebDriver = new WebDriverAdaptor(panelBaseLocation, getDriver());
-		ElementLocatorFactory finder = new SmartElementLocatorFactory(panelToWebDriver, (int) waitForTimeoutInSeconds
-				());
+		ElementLocatorFactory finder = new DefaultElementLocatorFactory(panelToWebDriver);
 		FieldDecorator decorator = new SmartFieldDecorator(finder, getDriver(), driverDelegate);
 		PageFactory.initElements(decorator, this);
 	}

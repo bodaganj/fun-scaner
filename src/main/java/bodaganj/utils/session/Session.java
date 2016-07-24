@@ -1,8 +1,8 @@
 package bodaganj.utils.session;
 
 import bodaganj.engine.ProjectLogger;
-import net.thucydides.core.SessionMap;
-import net.thucydides.core.Thucydides;
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.SessionMap;
 import org.slf4j.Logger;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public final class Session {
 	/** Method will warn if multiple keys equal by ignoreCase exist in Session */
 	public static Object get(final SessionKey key) {
 		String byKey = key.toString();
-		SessionMap<String, Object> session = Thucydides.getCurrentSession();
+		SessionMap<Object, Object> session = Serenity.getCurrentSession();
 		Object exact = session.get(byKey);
 		String warnMsg;
 		if (exact == null) {
@@ -32,14 +32,14 @@ public final class Session {
 			warnMsg = format("Object was matched by exact key [%s], but", byKey);
 		}
 		String anotherKey;
-		for (Map.Entry<String, Object> mapEntry : session.entrySet()) {
-			anotherKey = mapEntry.getKey();
+		for (Map.Entry<Object, Object> mapEntry : session.entrySet()) {
+			anotherKey = mapEntry.getKey().toString();
 			if (anotherKey.equalsIgnoreCase(byKey) && !anotherKey.equals(byKey)) {
 				LOG.warn(warnMsg + " similar key exist in Session [{}] \nObject by this key: {}", mapEntry.getKey(),
 						mapEntry.getValue());
 			}
 		}
-		LOG.info(String.format("Get object by key: %s, object: %s", byKey, exact));
+		LOG.debug("Get object by key: {}, object: {}", byKey, exact);
 		return exact;
 	}
 
@@ -72,7 +72,7 @@ public final class Session {
 		Object object = get(key);
 		Class<?> objectClass = object.getClass();
 		if (!objectClass.equals(type)) {
-			LOG.warn("Class type of object in session (" + objectClass + ") is not as expected (" + type + ")!");
+			LOG.warn("Class type of object in session ({}) is not as expected ({})!", objectClass, type);
 			return null;
 		} else {
 			return (T) object;
@@ -82,30 +82,30 @@ public final class Session {
 
 	public static void put(final SessionKey key, final Object value) {
 		LOG.info(String.format("Put object by key: %s, object: %s", key, value));
-		Thucydides.getCurrentSession().put(key.toString(), value);
+		Serenity.getCurrentSession().put(key.toString(), value);
 	}
 
 	/** get() will return null for this key again */
 	public static void remove(final SessionKey key) {
-		Thucydides.getCurrentSession().remove(key.toString());
+		Serenity.getCurrentSession().remove(key.toString());
 	}
 
 	public static void printSessionDump() {
 		LOG.info("\n\n************************ session dump ************************\n");
-		for (Map.Entry<String, Object> sessionEntry : Thucydides.getCurrentSession().entrySet()) {
+		for (Map.Entry<Object, Object> sessionEntry : Serenity.getCurrentSession().entrySet()) {
 			LOG.info(String.format("[%s]    [%s]", sessionEntry.getKey(), sessionEntry.getValue()));
 		}
 		LOG.info("\n************************ end session dump ************************\n");
 	}
 
 	public static boolean containsKey(final SessionKey key) {
-		return Thucydides.getCurrentSession().containsKey(key.toString());
+		return Serenity.getCurrentSession().containsKey(key.toString());
 	}
 
 	public static void clear() {
 		LOG.debug("Print Session DUMP before clear");
 		printSessionDump();
-		Thucydides.getCurrentSession().clear();
+		Serenity.getCurrentSession().clear();
 		LOG.info("Current session data have been cleared");
 	}
 }

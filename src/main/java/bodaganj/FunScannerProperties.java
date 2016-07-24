@@ -20,8 +20,7 @@ import java.util.Properties;
  */
 public final class FunScannerProperties {
 
-	private static final String THUCYDIDES_COMMON_PROPERTY_FILE = "src/test/resources/properties/thucydides_common" +
-			".properties";
+	private static final String SERENITY_COMMON_PROPERTY_FILE = "src/test/resources/properties/serenity.properties";
 	private static final String PROJECT_PROPERTY_FILE = "src/test/resources/properties/common.properties";
 	private static final Logger LOG = ProjectLogger.getLogger(FunScannerProperties.class.getSimpleName());
 	private static EnvironmentVariables environmentVariables = Injectors.getInjector().getProvider
@@ -31,7 +30,7 @@ public final class FunScannerProperties {
 
 	private FunScannerProperties() {
 		this.properties = new Properties();
-		loadThucydidesPropertiesToEnvironment();
+		loadSerenityPropertiesToEnvironment();
 		loadPropertiesFromFiles(PROJECT_PROPERTY_FILE);
 	}
 
@@ -39,9 +38,9 @@ public final class FunScannerProperties {
 		return instance;
 	}
 
-	private void loadThucydidesPropertiesToEnvironment() {
+	private void loadSerenityPropertiesToEnvironment() {
 		Properties localPreferences = new Properties();
-		try (FileInputStream fileInputStream = new FileInputStream(THUCYDIDES_COMMON_PROPERTY_FILE)) {
+		try (FileInputStream fileInputStream = new FileInputStream(SERENITY_COMMON_PROPERTY_FILE)) {
 			localPreferences.load(fileInputStream);
 			Enumeration propertyNames = localPreferences.propertyNames();
 			while (propertyNames.hasMoreElements()) {
@@ -58,7 +57,7 @@ public final class FunScannerProperties {
 			String absolutePath = propertiesFileLocalPreferences.getHomeDirectory().getAbsolutePath();
 			LOG.debug("Absolute path to local properties file --> {}", absolutePath);
 		} catch (IOException e) {
-			LOG.error("error loading thucydides properties", e);
+			LOG.error("error loading serenity properties", e);
 		}
 	}
 

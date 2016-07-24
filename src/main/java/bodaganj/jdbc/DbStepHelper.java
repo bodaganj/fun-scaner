@@ -1,8 +1,8 @@
 package bodaganj.jdbc;
 
 import bodaganj.engine.ProjectLogger;
-import org.fest.assertions.Fail;
 import org.fest.assertions.api.Assertions;
+import org.fest.assertions.api.Fail;
 import org.slf4j.Logger;
 
 import java.sql.Connection;

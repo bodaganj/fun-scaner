@@ -7,6 +7,8 @@ import bodaganj.jdbc.DbStepHelper;
 import bodaganj.pages.soccerWay.CompetitionsPage;
 import bodaganj.pages.soccerWay.SoccerWayPage;
 import bodaganj.utils.LeagueClubStatus;
+import bodaganj.utils.session.Session;
+import bodaganj.utils.session.SessionKey;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.slf4j.Logger;
@@ -46,6 +48,7 @@ public class SoccerWaySteps extends ScenarioSteps {
 
 	@Step
 	public void get_euro_cup_applicant_teams() {
+		LOG.info("Get all football clubs in " + Session.getS(SessionKey.COUNTRY));
 		List<FootballClubItem> footballClubItems = competitionsPage.getAllFootballClubs();
 		List<FootballClubItem> championsLeagueTeams = new ArrayList<>();
 		List<FootballClubItem> europaLeagueTeams = new ArrayList<>();

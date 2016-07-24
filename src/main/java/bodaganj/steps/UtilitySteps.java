@@ -3,6 +3,7 @@ package bodaganj.steps;
 import bodaganj.engine.ProjectLogger;
 import bodaganj.jdbc.DbQueriesHelper;
 import bodaganj.jdbc.DbStepHelper;
+import bodaganj.pages.AnyWebPage;
 import bodaganj.utils.LeagueClubStatus;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -20,6 +21,7 @@ public class UtilitySteps extends ScenarioSteps {
 	private static final Logger LOG = ProjectLogger.getLogger(UtilitySteps.class.getSimpleName());
 	private String clubName = "clubName";
 	private String separator = " ----> ";
+	private AnyWebPage soccerWayPage;
 
 	@Step
 	public void get_champions_league_participants(final List<String> countryList) {
@@ -43,5 +45,11 @@ public class UtilitySteps extends ScenarioSteps {
 				LOG.info(separator + map.get(clubName));
 			}
 		}
+	}
+
+	@Step
+	public void quitWebDriver() {
+		LOG.debug("Closing WebDriver...");
+		soccerWayPage.getDriver().quit();
 	}
 }
