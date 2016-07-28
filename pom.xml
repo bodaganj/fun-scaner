@@ -72,6 +72,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.11</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <webdriver.chrome.bin>
+                            /usr/bin/google-chrome
+                        </webdriver.chrome.bin>
+                    </systemPropertyVariables>
                     <includes>
                         <include>**/*TestSuite.java</include>
                     </includes>
