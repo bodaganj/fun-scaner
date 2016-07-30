@@ -14,7 +14,8 @@
         <serenity.version>1.1.36</serenity.version>
         <serenity.maven.version>1.1.36</serenity.maven.version>
         <serenity.jbehave.version>1.13.0</serenity.jbehave.version>
-        <!--<webdriver.driver>chrome</webdriver.driver>-->
+        <webdriver.driver>chrome</webdriver.driver>
+        <webdriver.chrome.driver>drivers/chromedriver</webdriver.chrome.driver>
     </properties>
 
     <dependencies>
@@ -72,11 +73,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.11</version>
                 <configuration>
-                    <systemPropertyVariables>
-                        <webdriver.chrome.bin>
-                            /usr/bin/google-chrome
-                        </webdriver.chrome.bin>
-                    </systemPropertyVariables>
                     <includes>
                         <include>**/*TestSuite.java</include>
                     </includes>
