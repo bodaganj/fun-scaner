@@ -13,8 +13,8 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -50,20 +50,14 @@ public class SoccerWaySteps extends ScenarioSteps {
 	public void get_euro_cup_applicant_teams() {
 		LOG.info("Get all football clubs in " + Session.getS(SessionKey.COUNTRY));
 		List<FootballClubItem> footballClubItems = competitionsPage.getAllFootballClubs();
-		List<FootballClubItem> championsLeagueTeams = new ArrayList<>();
-		List<FootballClubItem> europaLeagueTeams = new ArrayList<>();
-		for (FootballClubItem footballClubItem : footballClubItems) {
-			if (footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE) || footballClubItem
-					.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE_QUALIFIERS)) {
-				championsLeagueTeams.add(footballClubItem);
-			}
-		}
-		for (FootballClubItem footballClubItem : footballClubItems) {
-			if (footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE) || footballClubItem
-					.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE_QUALIFIERS)) {
-				europaLeagueTeams.add(footballClubItem);
-			}
-		}
+		List<FootballClubItem> championsLeagueTeams = footballClubItems.stream().filter(footballClubItem ->
+				footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE) || footballClubItem
+						.getLeagueClubStatus().equals(LeagueClubStatus.CHAMPIONS_LEAGUE_QUALIFIERS)).
+				collect(Collectors.toList());
+		List<FootballClubItem> europaLeagueTeams = footballClubItems.stream().filter(footballClubItem ->
+				footballClubItem.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE) || footballClubItem
+						.getLeagueClubStatus().equals(LeagueClubStatus.EUROPA_LEAGUE_QUALIFIERS)).
+				collect(Collectors.toList());
 		assertThat(championsLeagueTeams).as("Champions League list can't be empty!").isNotEmpty();
 		assertThat(europaLeagueTeams).as("Europa League list can't be empty!").isNotEmpty();
 		LOG.info("Champions League potential participants:");

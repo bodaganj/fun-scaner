@@ -29,9 +29,7 @@ public class UtilitySteps extends ScenarioSteps {
 			LOG.info("***** Get Champions League participants from " + country);
 			String request = DbQueriesHelper.selectEuroCupParticipants(country, LeagueClubStatus.CHAMPIONS_LEAGUE);
 			List<Map<String, String>> championsLeagueParticipantsList = DbStepHelper.select(request);
-			for (Map<String, String> map : championsLeagueParticipantsList) {
-				LOG.info(separator + map.get(clubName));
-			}
+			championsLeagueParticipantsList.forEach(map -> LOG.info(separator + map.get(clubName)));
 		}
 	}
 
@@ -41,9 +39,7 @@ public class UtilitySteps extends ScenarioSteps {
 			LOG.info("***** Get Europa League participants from " + country);
 			String request = DbQueriesHelper.selectEuroCupParticipants(country, LeagueClubStatus.EUROPA_LEAGUE);
 			List<Map<String, String>> europaLeagueParticipantsList = DbStepHelper.select(request);
-			for (Map<String, String> map : europaLeagueParticipantsList) {
-				LOG.info(separator + map.get(clubName));
-			}
+			europaLeagueParticipantsList.forEach(map -> LOG.info(separator + map.get(clubName)));
 		}
 	}
 

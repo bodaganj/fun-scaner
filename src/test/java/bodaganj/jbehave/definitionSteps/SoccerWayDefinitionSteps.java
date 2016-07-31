@@ -23,10 +23,10 @@ public class SoccerWayDefinitionSteps {
 
 	@When("search for Euro cups participant teams in $country top division(s)")
 	public void searchForEuroCupsParticipantsInLeague(final List<String> country) {
-		for (String countryName : country) {
+		country.forEach(countryName -> {
 			soccerWaySteps.click_competition_tab();
 			soccerWaySteps.chose_top_division_of_specified_country(countryName.trim());
 			soccerWaySteps.get_euro_cup_applicant_teams();
-		}
+		});
 	}
 }

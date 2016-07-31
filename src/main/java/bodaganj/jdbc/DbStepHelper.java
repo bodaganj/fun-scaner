@@ -95,12 +95,10 @@ public final class DbStepHelper {
 				LOG.info("-------- Row: {}", rowIndex);
 				Map<String, String> row = resultTable.get(rowIndex);
 				Map<String, String> newRow = new LinkedHashMap<>();
-				for (final String field : columnsToFilterResultsBy) {
-					if (row.containsKey(field)) {
-						newRow.put(field, row.get(field));
-						LOG.info("Field: {}}, Result: {}", field, row.get(field));
-					}
-				}
+				columnsToFilterResultsBy.stream().filter(row:: containsKey).forEach(field -> {
+					newRow.put(field, row.get(field));
+					LOG.info("Field: {}}, Result: {}", field, row.get(field));
+				});
 				filteredResultTable.add(newRow);
 			}
 		} else {

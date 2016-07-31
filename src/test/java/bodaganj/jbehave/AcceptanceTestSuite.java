@@ -3,9 +3,9 @@ package bodaganj.jbehave;
 import bodaganj.engine.ProjectLogger;
 import bodaganj.utils.OperationSystem;
 import ch.lambdaj.Lambda;
+import net.serenitybdd.jbehave.SerenityStories;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
-import net.serenitybdd.jbehave.SerenityStories;
 import org.fest.assertions.api.Assertions;
 import org.jbehave.core.io.StoryFinder;
 import org.slf4j.Logger;
@@ -144,9 +144,7 @@ public class AcceptanceTestSuite extends SerenityStories {
 
 	private void outputWhichStoriesAreBeingRun(final List<String> stories) {
 		LOG.info("Running {} stories: ", stories.size());
-		for (String story : stories) {
-			LOG.info(" - {}", story);
-		}
+		stories.forEach(story -> LOG.info(" - {}", story));
 	}
 
 	private void setDriverAccordingToOS() {

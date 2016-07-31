@@ -16,6 +16,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by bogdan on 12.04.16.
@@ -65,12 +66,7 @@ public class CompetitionsPage extends AbstractPage {
 
 	private List<FootballClubItem> getCertainClubs(final LeagueClubStatus... status) {
 		List<LeagueClubStatus> statusList = Arrays.asList(status);
-		List<FootballClubItem> certainClubs = new ArrayList<>();
-		for (FootballClubItem club : getAllFootballClubs()) {
-			if (statusList.contains(club.getLeagueClubStatus())) {
-				certainClubs.add(club);
-			}
-		}
-		return certainClubs;
+		return getAllFootballClubs().stream().filter(club -> statusList.contains(club
+				.getLeagueClubStatus())).collect(Collectors.toList());
 	}
 }
