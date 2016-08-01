@@ -29,11 +29,11 @@
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-junit</artifactId>
-            <version>${serenity.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>net.serenity-bdd</groupId>-->
+            <!--<artifactId>serenity-junit</artifactId>-->
+            <!--<version>${serenity.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-jbehave</artifactId>
