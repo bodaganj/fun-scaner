@@ -19,7 +19,7 @@ import java.util.List;
  * Created by bogdan on 27.04.16.
  * Test framework
  */
-public class DataItemsFactory {
+public final class DataItemsFactory {
 
 	private static final Logger LOG = ProjectLogger.getLogger(DataItemsFactory.class.getSimpleName());
 
@@ -58,7 +58,7 @@ public class DataItemsFactory {
 		return pageDataList;
 	}
 
-	public <T extends DataItem> T getElementNamed(final Class<T> clazz, final WebElementFacade baseElement, final
+	private  <T extends DataItem> T getElementNamed(final Class<T> clazz, final WebElementFacade baseElement, final
 	AbstractPage driverDelegate) throws ReflectiveOperationException {
 		T dataItem = clazz.getDeclaredConstructor(AbstractPage.class).newInstance(driverDelegate);
 		WebDriverAdaptor webDriverAdaptor = new WebDriverAdaptor(baseElement, driverDelegate.getDriver());

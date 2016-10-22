@@ -24,18 +24,14 @@ public abstract class AbstractPage extends PageObject {
 
 	@WhenPageOpens
 	public void eventOpened() {
-		maximizeBrowser();
-	}
-
-	public DataItemsFactory getDataItemsFactory() {
-		return dataItemsFactory;
-	}
-
-	public void maximizeBrowser() {
 		final Window browserWindow = getDriver().manage().window();
 		browserWindow.maximize();
 		LOG.info("Browser got maximized, checking dimensions...");
 		Dimension actualDimension = browserWindow.getSize();
 		LOG.info("Width: {}, height: {}", actualDimension.getWidth(), actualDimension.getHeight());
+	}
+
+	public DataItemsFactory getDataItemsFactory() {
+		return dataItemsFactory;
 	}
 }
