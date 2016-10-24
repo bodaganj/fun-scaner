@@ -107,7 +107,7 @@ public abstract class AbstractPage extends PageObject {
 		timeouts.implicitlyWait(initial, TimeUnit.MILLISECONDS);
 	}
 
-	public Predicate<WebElementFacade> isVisibleElement(final Boolean shouldBeVisible) {
+	private Predicate<WebElementFacade> isVisibleElement(final Boolean shouldBeVisible) {
 		return element -> shouldBeVisible.equals(element.isCurrentlyVisible());
 	}
 }
